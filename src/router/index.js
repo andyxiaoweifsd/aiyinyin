@@ -3,13 +3,15 @@ import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import HelloWorld from '../components/HelloWorld.vue'
 import City from '../components/city/City.vue'
+import Detail from '../components/detail/Detail.vue'
 
 
 Vue.use(VueRouter);
 
 const routes = [
-  { path: '/',name: 'Home',component: Home,},
+  { path: '/',name: 'Home',component: HelloWorld,},
   { path: '/City',name: 'City',component:City},
+  { path: '/detail',name: 'Detail',component:Detail},
   {
     path:'/HelloWorld', component: HelloWorld
   },

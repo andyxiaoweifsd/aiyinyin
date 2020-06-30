@@ -17,7 +17,6 @@ export default {
 <style lang="scss" scoped>
 @import '~styles/varibles.scss';
    .herder{
-      position: relative;
      height: .86rem;
      line-height: .86rem;
      text-align: center;

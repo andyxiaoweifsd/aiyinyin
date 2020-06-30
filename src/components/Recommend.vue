@@ -2,7 +2,8 @@
   <div>
     <div class="title">热销推荐</div>
     <ul v-for="(item, key) of RecommendList" :key="key">
-      <li class="item border-bottom">
+      <router-link tag="li" :key="item.id" to="/detail"
+       class="item border-bottom">
 
           <img :src="item.imgUrl" alt class="item-img" />
 
@@ -11,24 +12,42 @@
           <p class="item-dest">{{item.desc}}</p>
           <button class="item-button">查看详情</button>
         </div>
-      </li>
+      </router-link>
     </ul>
-    <div class="item-all"><p class="item-product">查看所有产品</p></div>
+    <div class="item-all" @click="TapAllRecommendList"><p class="item-product">查看所有产品</p></div>
   </div>
 </template>
 <script>
 export default {
   data(){
     return{
-      RecommendList:[
-      {imgUrl: require('../assets/imgs/timg2.png'),title: '小鬼',desc: '你在干嘛,你在干嘛你在干嘛你在干嘛'},
-      {imgUrl: require('../assets/imgs/timg3.png'),title: '南归',desc: '今天出去玩吗'},
-      {imgUrl: require('../assets/imgs/timg4.png'),title: '大鬼',desc: 'qqq'},
-      // {imgUrl: require('../assets/imgs/timg5.png'),title: '老鬼',desc: 'ddd'},
-      // {imgUrl: require('../assets/imgs/timg2.png'),title: '死鬼',desc: 'fffffff'},
-      // {imgUrl: require('../assets/imgs/timg7.png'),title: '南归',desc: '今天出去玩吗'},
-      // {imgUrl: require('../assets/imgs/timg3.png'),title: '南归',desc: '今天出去玩吗'}
-      ]
+      RecommendList: [
+        {imgUrl: require('../assets/imgs/timg2.png'),title: '小鬼',desc: '你在干嘛,你在干嘛你在干嘛你在干嘛'},
+        {imgUrl: require('../assets/imgs/timg3.png'),title: '南归',desc: '今天出去玩吗'},
+        {imgUrl: require('../assets/imgs/timg4.png'),title: '大鬼',desc: 'qqq'},
+      ],
+      TapAllRecommendListFlag: false
+    }
+  },
+  methods: {
+    TapAllRecommendList() {
+      if (!this.TapAllRecommendListFlag) {
+        this.TapAllRecommendListFlag = true
+        this.RecommendList = [
+          ...this. RecommendList,
+          {imgUrl: require('../assets/imgs/timg5.png'),title: '老鬼',desc: 'ddd'},
+          {imgUrl: require('../assets/imgs/timg2.png'),title: '死鬼',desc: 'fffffff'},
+          {imgUrl: require('../assets/imgs/timg7.png'),title: '南归',desc: '今天出去玩吗'},
+          {imgUrl: require('../assets/imgs/timg3.png'),title: '南归',desc: '今天出去玩吗'}
+        ]
+      } else {
+        this.TapAllRecommendListFlag = false
+        this.RecommendList = [
+          {imgUrl: require('../assets/imgs/timg2.png'),title: '小鬼',desc: '你在干嘛,你在干嘛你在干嘛你在干嘛'},
+          {imgUrl: require('../assets/imgs/timg3.png'),title: '南归',desc: '今天出去玩吗'},
+          {imgUrl: require('../assets/imgs/timg4.png'),title: '大鬼',desc: 'qqq'}
+        ]
+      }
     }
   }
 };
