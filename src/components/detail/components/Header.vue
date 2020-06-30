@@ -1,6 +1,6 @@
 <template>
   <div>
-     <div class="header-abs" @click="HeaderClick">
+     <div class="header-abs" @click="HeaderClick" v-show="showAbs">
        <div class="iconfont .header-abs-back">&#xe63b;</div>
      </div>
      <div class="header-fixed">景点详情
@@ -10,6 +10,9 @@
 </template>
 <script>
 export default {
+  data () {
+    showAbs
+  },
   methods: {
     HeaderClick () {
       this.$router.push({path:'/'})
